@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "devops-challenge-faceit",
+  "private_key_id": "b5681e94bc838d5908555a4dc7cd30ae109adea4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQChEET2ohoZaQEL\npalyLNM/RJwrAPlkhc7q11ZWy/fZbwHJFmonQM/b1UhTkkkifN2mkNcE3e8/hhuy\n8ev5LUuVGD8d0/WAMGspOdDucfcssXx5FXSyISqBYL/pdNbRu8NeDveZ+81IG/12\niXY0IejKCOKrgb+toK+VYGAiqeW+V8PZpSPNVGMgCUByifGEFl+T1zX40OJyKYnh\nzgvHhVn7/A+5ldIM+QKrmMvK2GU79MUfesvaapsGlyZcKWdegh5h9iZUKY4V0C/W\n/OlBXxRhx5rRXuxMh+dHEL9CLqVjZZFsVGiePrYC249y0ugm/XQK73+DtdtIsmB5\nD7llpXBlAgMBAAECggEAEwOxsJA4lpFf7zkShQkns0ttSGJoDucBI5ZiegLAcun5\nAv1jcNjk8SX/0OXvPmQRYs2spMVyrkQt1vVaj2M6jhJ7uRDB5e1RaV+K++t2a89U\nS5Mt4K2rr/R1E6GYjtAk42DO+F3SwVWUmb7mtobeTaO45th9gYj70Z28G7uFBPB1\njKt6NFm1P/5d7qPkwDqqbVlkIxhFHPbw45vMZwFXXxyPkeSS2+STmkmpuIP+1xZk\nESiXYV9uDcEl0UECbGN70F+CqTiGawfaEL5G79w8x+SALCOH0zX49IKsi+Edx6kE\nH6GtPfacbJjsSzRdJTiYHmZC+n1sYdk0FHGnke4lAQKBgQDVY9hhzOGMW69O6B3D\nhi/1uzmzsBFpxH9NaXzzjqWlTFhk0zDOogrVumrbasPQRIIjc/FBTup2gsaMwqlH\nNI7OgGzvPq8wZM8QLfSizRXqbeFnd4xtssrKkNFc0Oq2ParvqQjxF0nQNRiPLmX4\nGFjzorUpSCkPZ44MIsZf/OapQQKBgQDBOZRH+tOZy88LJoDYuHfYdUI8nkymZdzd\nheSh8J5gyyurN0GeHuFarIN4dZjJ7/ZZSfkHc9DlT6lwMYti2woJYC9p8tyugaWZ\niTDJA5VHEM8BANN0jOhJQ+AffNL73EfsfJfFfmzDBYlEOa7vrINNppXxwNjnCRex\nOd93zCZ6JQKBgGA3KuO+K5zL4lnj0zfME2frSXM52kAkd3oCLHLtSMcli1260/D3\no4cHDRNuKmiH21388zUNTi6tfLUPOKCAlDuMMJIXY4qgibSz4/BcJJuVe+LZRppX\n2ZRIg/4jvRD68U4qm3uJkqCssCwvMY8R+1mvbZv1i34EpUnXjDbPo3mBAoGAEfzf\nPfguvLGJe7tA4WwC1CbOXMBL2G3BKuotB5pT1CT10sGZHTQ4vG007ADekWYCY/uL\n8FKqzr4kwuoJ1NEZVRgcMdvHCYPOO8XWwc/QlMYOz0QZa082zKNB+Qxww7uVAoHy\nyxLi4yDfz3cjPvKrYo4whUnzp0Zkaz48/HUH2/UCgYEAsw3lm74T7Q5su7dMkQAG\nM+I1Usgw1DysvcqE37kAVPrs1ALJUwlmLO0fb3+C6PSRfHtmMquVfutQyZkUaCBk\njzOGysvOyrarSZ0v40KooJ84uu6fTYGUs/dWbOX5CyHDOA1CaZhxxvCZF29xZ8GS\nPiD42juf4GB1CJnOkdjl8vE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "quickstart-service-account@devops-challenge-faceit.iam.gserviceaccount.com",
+  "client_id": "104754251513859714390",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/quickstart-service-account%40devops-challenge-faceit.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,47 @@
+version: '3.5'
+services:
+    app:
+      container_name: test-app
+      build: 
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - "8080:8080"
+      image: test-app
+      environment:
+        POSTGRESQL_HOST: "postgres"
+        POSTGRESQL_PORT: 5432
+        POSTGRESQL_USER: "postgres"
+        POSTGRESQL_PASSWORD: "mysecretpassword"
+        POSTGRESQL_DBNAME: "postgres"      
+        dbType: "POSTGRES"
+      networks:
+        - internal_net
+      depends_on:
+        - postgres
+      links:
+        - postgres
+
+    postgres:
+      container_name: postgres
+      image: postgres:latest
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: "mysecretpassword"
+      volumes:
+        - postgres_volume:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+      networks:
+        - internal_net
+
+networks:
+  internal_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 20.0.1.0/24
+
+
+volumes:
+  postgres_volume:

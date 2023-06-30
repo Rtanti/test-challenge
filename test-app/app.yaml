@@ -1,0 +1,15 @@
+runtime: go116
+service: default
+
+handlers:
+- url: /.*
+  script: auto
+
+env_variables:
+  PORT: 8080
+  POSTGRESQL_HOST: postgres
+  POSTGRESQL_PORT: 5432
+  POSTGRESQL_USER: postgres
+  POSTGRESQL_PASSWORD: mysecretpassword
+  POSTGRESQL_DBNAME: postgres
+
