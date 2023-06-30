@@ -24,3 +24,5 @@ vendor/
 
 terraform.tfstate*
 things-done
+
+terraform-app.json
