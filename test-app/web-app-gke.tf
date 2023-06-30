@@ -75,6 +75,18 @@ spec:
             requests:
               memory: "256Mi"
               cpu:    "1"
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 8080
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 8080
+        initialDelaySeconds: 10
+        periodSeconds: 10
       volumes:
       - name: quickstart-sa-volume
         secret:
