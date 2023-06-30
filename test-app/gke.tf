@@ -1,6 +1,7 @@
 resource "google_project_service" "workload_identity_api" {
   project = var.google_cloud_project
   service = "iam.googleapis.com"
+  disable_dependent_services = true
 }
 
 #resource "google_workload_identity_pool" "my_pool" {

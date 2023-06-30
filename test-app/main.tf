@@ -21,14 +21,14 @@ provider "google" {
 #  type     = "CLOUD_IAM_SERVICE_ACCOUNT"
 #}
 
-resource "google_project_iam_binding" "cloudsql_client_binding" {
-  project = "${var.google_cloud_project}"
-  role    = "roles/cloudsql.client"
-
-  members = [
-    "serviceAccount:quickstart-service-account@${var.google_cloud_project}.iam.gserviceaccount.com",
-  ]
-}
+#resource "google_project_iam_binding" "cloudsql_client_binding" {
+#  project = "${var.google_cloud_project}"
+#  role    = "roles/cloudsql.client"
+#
+#  members = [
+#    "serviceAccount:quickstart-service-account@${var.google_cloud_project}.iam.gserviceaccount.com",
+#  ]
+#}
 #
 #resource "google_project_iam_binding" "cloudsql_instanceuser_binding" {
 #  project = var.google_cloud_project

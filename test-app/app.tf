@@ -86,6 +86,7 @@ resource "google_project_service" "enable_gke_api" {
   project = google_cloud_run_service.test_app_beb.project
   service = "container.googleapis.com"
   depends_on = [ google_cloud_run_service.test_app_beb ]
+  disable_dependent_services = true
 }
 
 #resource "google_cloud_run_service_iam_policy" "test_app_beb_iam_policy" {
