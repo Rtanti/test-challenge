@@ -25,11 +25,17 @@ ops-test-app
 terraform.tfstate*
 things-done
 
+.terraform
 terraform-app.json
 web-app.json
+*.json
+
+cloud-sql-proxy
+ops-test-app
 
 gke_cloud_auth_plugin_cache
+ca.crt
 
 gke-kubeconfig.yaml
-new-quickstart0gke.yaml
+new-quickstart-gke.yaml
 new-gke-config.yaml

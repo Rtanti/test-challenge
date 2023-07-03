@@ -1,0 +1,36 @@
+variable "project_id" {
+  description = "Google Cloud project ID"
+  type        = string
+  default     = "devops-faceit-challenge"
+}
+
+resource "google_project_service" "compute" {
+  project = var.project_id
+  service = "compute.googleapis.com"
+}
+
+resource "google_project_service" "sql_admin" {
+  project = var.project_id
+  service = "sqladmin.googleapis.com"
+}
+
+resource "google_project_service" "cloud_run" {
+  project = var.project_id
+  service = "run.googleapis.com"
+}
+
+resource "google_project_service" "artifact_registry" {
+  project = var.project_id
+  service = "artifactregistry.googleapis.com"
+}
+
+resource "google_project_service" "cloud_build" {
+  project = var.project_id
+  service = "cloudbuild.googleapis.com"
+}
+
+resource "google_project_service" "service_networking" {
+  project = var.project_id
+  service = "servicenetworking.googleapis.com"
+}
+
