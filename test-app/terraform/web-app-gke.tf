@@ -1,10 +1,13 @@
 provider "kubectl" {
   config_context_cluster = "gke_devops-challenge-faceit_europe-west1_test-app-beb-cluster"
-  config_path = "/home/rentan/devops-challenge/test-app/gke-kubeconfig.yaml"
+#  config_path = "/home/rentan/devops-challenge/test-app/gke-kubeconfig.yaml"
+  config_path = "/home/rentan/devops-challenge/test-app/terraform/new-quickstart-gke.yaml"
+
 }
 
 provider "kubernetes" {
-  config_path = "/home/rentan/devops-challenge/test-app/gke-kubeconfig.yaml"
+  #config_path = "/home/rentan/devops-challenge/test-app/gke-kubeconfig.yaml"
+  config_path = "/home/rentan/devops-challenge/test-app/terraform/new-quickstart-gke.yaml"
   config_context = "gke_devops-challenge-faceit_europe-west1_test-app-beb-cluster"
 }
 output "cluster_config" {
@@ -17,7 +20,7 @@ resource "kubernetes_service_account" "gke_ksa_service_account" {
     name        = "gke-ksa"
     namespace   = "default"
     annotations = {
-      "iam.gke.io/gcp-service-account"                       = "quickstart-service-account@devops-challenge-faceit.iam.gserviceaccount.co"
+      "iam.gke.io/gcp-service-account" = "${var.google_cloud_app_service_account}@${var.google_cloud_project}.iam.gserviceaccount.com"
     }
   }
 }
@@ -25,13 +28,49 @@ resource "kubernetes_service_account" "gke_ksa_service_account" {
 #resource "google_project_iam_member" "qs_ksa_sa_user_policy" {
 #  project = var.google_cloud_project
 #  role    = "roles/iam.serviceAccountUser"
-#  member  =  "serviceAccount:quickstart-service-account@devops-challenge-faceit.iam.gserviceaccount.com"
+#  member  =  "serviceAccount:${var.google_cloud_app_service_account}@devops-challenge-faceit.iam.gserviceaccount.com"
 #}
 #resource "google_project_iam_member" "gke_ksa_sa_policy" {
 #  project = var.google_cloud_project
 #  role    = "roles/iam.workloadIdentityUser"
 #  member  = "serviceAccount:devops-challenge-faceit.svc.id.goog[default/gke-ksa].quickstart-service-account@devops-challenge-faceit.iam.gserviceaccount.com"
 #}
+
+resource "kubernetes_secret" "db_creds" {
+  metadata {
+    name = "db-creds"
+  }
+
+  data = {
+    "username"  = "postgres"
+    "password"  = "mysecretpassword"
+    "database"  = "quickstart_db"
+  }
+}
+
+#resource "google_service_account_key" "key" {
+#  service_account_id = "${var.google_cloud_app_service_account}@${var.google_cloud_project}.iam.gserviceaccount.com"
+#}
+#
+#resource "local_file" "key_file" {
+#  filename = "~/key.json"
+#  content  = google_service_account_key.key.private_key
+#}
+#
+#output "keyfile" {
+#  value  = google_service_account_key.key.private_key
+#  sensitive = true
+#}
+resource "kubernetes_secret" "sa_secret" {
+  metadata {
+    name = "quickstart-sa-secret"
+  }
+
+  data = {
+    "web-app.json" = file("/home/rentan/key.json")
+  }
+}
+
 
 resource "kubectl_manifest" "web_app" {
   provider  = kubectl
@@ -102,7 +141,18 @@ spec:
             requests:
               memory: "256Mi"
               cpu:    "1"
-
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 8080
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 8080
+        initialDelaySeconds: 10
+        periodSeconds: 10
       volumes:
       - name: quickstart-sa-volume
         secret:
@@ -128,6 +178,7 @@ spec:
   type: LoadBalancer
 EOF
 }
+
 
 #data "google_container_cluster" "my_cluster" {
 #  name     = "test-app-beb-cluster"

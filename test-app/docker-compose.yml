@@ -2,18 +2,18 @@ version: '3.5'
 services:
     app:
       container_name: test-app
-      build: 
+      build:
         context: .
         dockerfile: Dockerfile
       ports:
         - "8080:8080"
-      image: test-app
+      image: test-app-test:0.0.1
       environment:
         POSTGRESQL_HOST: "postgres"
         POSTGRESQL_PORT: 5432
         POSTGRESQL_USER: "postgres"
         POSTGRESQL_PASSWORD: "mysecretpassword"
-        POSTGRESQL_DBNAME: "postgres"      
+        POSTGRESQL_DBNAME: "postgres"
         dbType: "POSTGRES"
       networks:
         - internal_net
@@ -39,8 +39,7 @@ networks:
   internal_net:
     ipam:
       driver: default
-      config:
-        - subnet: 20.0.1.0/24
+
 
 
 volumes:
