@@ -18,7 +18,7 @@
 vendor/
 
 # Ignore binary
-/ops-test-app
+ops-test-app
 
 .env
 
@@ -26,3 +26,10 @@ terraform.tfstate*
 things-done
 
 terraform-app.json
+web-app.json
+
+gke_cloud_auth_plugin_cache
+
+gke-kubeconfig.yaml
+new-quickstart0gke.yaml
+new-gke-config.yaml

@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,14 +37,13 @@ spec:
                 secretKeyRef:
                   name: db-creds
                   key: database
-              resources:
-                limits:
-                  cpu: "0.5"
-                  memory: "512Mi"
-                requests:
-                  cpu: "0.2"
-                  memory: "256Mi"
-
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.2"
+              memory: "256Mi"
         - name: cloud-sql-proxy
           image: gcr.io/cloudsql-docker/gce-proxy:1.28.0 # make sure the use the latest version
           command:
@@ -60,24 +60,38 @@ spec:
             mountPath: /secrets/
             readOnly: true
           resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
             requests:
               memory: "256Mi"
               cpu:    "1"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
       volumes:
       - name: quickstart-sa-volume
         secret:
           secretName: quickstart-sa-secret
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-app-service
+  name: test-app-ingress
 spec:
   selector:
     app: test-app-beb
   ports:
-    - protocol: tcp
-      port: 8080
+    - protocol: TCP
+      port: 80
       targetPort: 8080
-  type: LoadBalance
+  type: LoadBalancer
