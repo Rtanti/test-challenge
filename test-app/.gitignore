@@ -33,7 +33,7 @@ web-app.json
 cloud-sql-proxy
 ops-test-app
 
-gke_cloud_auth_plugin_cache
+gke_gcloud_auth_plugin_cache
 ca.crt
 
 gke-kubeconfig.yaml
